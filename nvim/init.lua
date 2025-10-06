@@ -6,6 +6,4 @@ if vim.g.vscode then
   vim.g.maplocalleader = "\\"
 else
   require("config.lazy")
-  vim.cmd.colorscheme("catppuccin")
-  vim.g.snacks_animate = false
 end
