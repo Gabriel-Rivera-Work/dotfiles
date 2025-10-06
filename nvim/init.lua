@@ -7,4 +7,5 @@ if vim.g.vscode then
 else
   require("config.lazy")
   vim.cmd.colorscheme("catppuccin")
+  vim.g.snacks_animate = false
 end
