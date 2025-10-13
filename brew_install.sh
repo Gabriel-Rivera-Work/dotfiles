@@ -31,7 +31,7 @@ brew install \
   fzf libevent libvmaf node srt \
   gettext libgit2 libvorbis starship \
   giflib libidn2 libvpx opencode svt-av1 \
-  glib libmicrohttpd libx11 opencore-amr tesseract
+  glib libmicrohttpd libx11 opencore-amr tesseract gh
 
 echo "Installing casks..."
 brew install --cask \
