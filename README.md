@@ -28,6 +28,7 @@ These are my personal dotfiles for setting up a development environment on macOS
    ln -s ~/dotfiles/nvim/ ~/.config/nvim
    ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
    ln -s ~/dotfiles/tmux/ ~/.config/tmux
+   ln -s ~/dotfiles/zshrc/.zshrc ~/.zshrc
    ```
 
 4. **Install zsh-syntax-highlighting:**
