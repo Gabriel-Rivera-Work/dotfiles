@@ -1,18 +1,60 @@
 # Dotfiles
 
-These are my personal dotfiles for setting up a development environment on macOS. They include configurations for Neovim, Ghostty, Starship, and other tools.
+These are my personal dotfiles for setting up a development environment on macOS. They include configurations for Neovim, Ghostty, Starship, Tmux, and other tools.
 
-## Installation
+## Quick Installation
+
+Run this one-liner to install everything on a fresh machine:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/your-username/dotfiles/main/install.sh)
+```
+
+Or clone and install manually:
+
+```bash
+git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./install.sh
+```
+
+The installation script will:
+
+- Clone the dotfiles repository (if not already present)
+- Install Homebrew (macOS only)
+- Install all required packages and applications
+- Create symlinks for all configuration files (backing up existing configs)
+- Install Tmux Plugin Manager (TPM)
+
+## Post-Installation
+
+After running the installation script:
+
+1. **Restart your terminal** or run:
+
+   ```bash
+   source ~/.zshrc
+   ```
+
+2. **Install Tmux plugins:**
+   - Open tmux: `tmux`
+   - Press `prefix + I` (default prefix is `Ctrl+b`) to install plugins
+
+3. **Open Neovim:**
+   - Run `nvim`
+   - Plugins will install automatically via Lazy.nvim
+
+## Manual Installation
+
+If you prefer to install components individually:
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+   git clone https://github.com/gabyriv/dotfiles.git ~/dotfiles
    ```
 
-2. **Run the installation script:**
-
-   This will install all the necessary applications and tools using Homebrew.
+2. **Install Homebrew packages:**
 
    ```bash
    cd ~/dotfiles
@@ -21,20 +63,11 @@ These are my personal dotfiles for setting up a development environment on macOS
 
 3. **Create symlinks:**
 
-   The `README.md` file contains the necessary commands to create symlinks for the configuration files:
-
    ```bash
-   ln -s ~/dotfiles/ghostty/ ~/.config/ghostty
-   ln -s ~/dotfiles/nvim/ ~/.config/nvim
-   ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
-   ln -s ~/dotfiles/tmux/ ~/.config/tmux
-   ln -s ~/dotfiles/zshrc/.zshrc ~/.zshrc
-   ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+   ./create_symlinks.sh
    ```
 
-4. **Install zsh-syntax-highlighting:**
-
-   Follow the instructions in the `README.md` file to install and enable the `zsh-syntax-highlighting` plugin.
+## What's Included
 
 ## Configuration
 
