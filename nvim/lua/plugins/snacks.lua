@@ -63,7 +63,7 @@ end
 return {
   "snacks.nvim",
   opts = {
-    indent = { enabled = false },
+    indent = { enabled = true },
     dashboard = {
       preset = {
         header = [[

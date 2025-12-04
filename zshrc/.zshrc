@@ -45,8 +45,12 @@ alias cd="z"
 # Lazygit
 alias lg="lazygit"
 
+# Brew
+alias buu="brew update && brew upgrade"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . "$HOME/.local/bin/env"
+
