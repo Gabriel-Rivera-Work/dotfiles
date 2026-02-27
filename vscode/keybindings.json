@@ -1,0 +1,548 @@
+// Place your key bindings in this file to override the defaults
+// NEOVIM
+[
+  // ========== NAVIGATION ==========
+  // Window Navigation (like LazyVim's <C-h/j/k/l>)
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "neovim.mode != 'insert'",
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown",
+    "when": "neovim.mode != 'insert'",
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp",
+    "when": "neovim.mode != 'insert'",
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "neovim.mode != 'insert'",
+  },
+  // Resize window using ctrl+arrow keys
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.increaseViewHeight",
+    "when": "neovim.mode != 'insert'",
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.decreaseViewHeight",
+    "when": "neovim.mode != 'insert'",
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "neovim.mode != 'insert'",
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "neovim.mode != 'insert'",
+  },
+  // Buffer/Tab Navigation
+  {
+    "key": "shift+h",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "shift+l",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space b b",
+    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space `",
+    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // ========== LEADER MENUS & ACTIONS ==========
+  // File operations
+  {
+    "key": "space f n",
+    "command": "workbench.action.files.newUntitledFile",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space f f",
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space space",
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space f r",
+    "command": "workbench.action.openRecent",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space f s",
+    "command": "workbench.action.files.save",
+    "when": "neovim.mode != 'insert' && (editorTextFocus || !inputFocus)",
+  },
+  // Fix for uppercase key combinations - use shift+s explicitly
+  {
+    "key": "space f shift+s",
+    "command": "workbench.action.files.saveAll",
+    "when": "neovim.mode != 'insert' && (editorTextFocus || !inputFocus)",
+  },
+  // Buffer operations
+  {
+    "key": "space b d",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Fix for uppercase key combinations
+  {
+    "key": "space b shift+d",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space b o",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Window operations
+  {
+    "key": "space -",
+    "command": "workbench.action.splitEditorDown",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Fix for special character key combinations
+  {
+    "key": "space shift+\\",
+    "command": "workbench.action.splitEditorRight",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space w d",
+    "command": "workbench.action.closeEditorsInGroup",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space w m",
+    "command": "workbench.action.toggleMaximizeEditorGroup",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // File Explorer
+  {
+    "key": "space e",
+    "command": "workbench.view.explorer",
+    "when": "neovim.mode == 'normal' && !sideBarVisible && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "neovim.mode == 'normal' && sideBarVisible && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space p",
+    "command": "workbench.view.extensions",
+    "when": "neovim.mode == 'normal' && !sideBarVisible && (editorTextFocus || !inputFocus)",
+  },
+  // File Explorer vim-like bindings
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "v",
+    "command": "explorer.openToSide",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  {
+    "key": "o",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "filesExplorerFocus && !inputFocus",
+  },
+  // Git (LazyGit and git operations)
+  {
+    "key": "space g g",
+    "command": "lazygit.openLazygit",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space g s",
+    "command": "workbench.view.scm",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space g b",
+    "command": "gitlens.toggleFileBlame",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space g d",
+    "command": "workbench.view.extension.gitlens",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Fixed GitLens search to ensure it doesn't trigger in input fields
+  {
+    "key": "space g l",
+    "command": "gitlens.showCommitSearch",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus) && !inputFocus && !searchInputBoxFocus",
+  },
+  // Search
+  {
+    "key": "space s s",
+    "command": "workbench.action.findInFiles",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space s g",
+    "command": "workbench.action.findInFiles",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space s b",
+    "command": "actions.find",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  {
+    "key": "space s h",
+    "command": "workbench.action.replaceInFiles",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space /",
+    "command": "workbench.action.findInFiles",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Vim-like search result navigation
+  {
+    "key": "n",
+    "command": "editor.action.nextMatchFindAction",
+    "when": "findWidgetVisible && !inputfocus",
+  },
+  {
+    "key": "shift+n",
+    "command": "editor.action.previousMatchFindAction",
+    "when": "findWidgetVisible && !inputfocus",
+  },
+  {
+    "key": "j",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen && !inputFocus",
+  },
+  {
+    "key": "k",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inQuickOpen && !inputFocus",
+  },
+  // Code Actions
+  {
+    "key": "space c a",
+    "command": "editor.action.sourceAction",
+    "when": "neovim.mode == 'normal' && editorHasCodeActionsProvider && (editorTextFocus || !inputFocus) && !editorReadonly",
+  },
+  {
+    "key": "space c f",
+    "command": "editor.action.formatDocument",
+    "when": "neovim.mode == 'normal' && editorHasDocumentFormattingProvider && (editorTextFocus || !inputFocus) && !editorReadonly",
+  },
+  {
+    "key": "space c r",
+    "command": "editor.action.rename",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // LSP Navigation
+  //   {
+  //     "key": "space g d",
+  //     "command": "editor.action.revealDefinition",
+  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  //   },
+  //   {
+  //     "key": "space g r",
+  //     "command": "editor.action.goToReferences",
+  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  //   },
+  //   {
+  //     "key": "space g i",
+  //     "command": "editor.action.goToImplementation",
+  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  //   },
+  //   {
+  //     "key": "space g t",
+  //     "command": "editor.action.goToTypeDefinition",
+  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  //   },
+  // Diagnostics
+  {
+    "key": "space x d",
+    "command": "workbench.actions.view.problems",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space x x",
+    "command": "workbench.action.problems.focus",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space x w",
+    "command": "workbench.actions.view.problems",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "]d",
+    "command": "editor.action.marker.next",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  {
+    "key": "[d",
+    "command": "editor.action.marker.prev",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  {
+    "key": "]e",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  {
+    "key": "[e",
+    "command": "editor.action.marker.prevInFiles",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  {
+    "key": "]w",
+    "command": "editor.action.marker.nextInFiles",
+    "args": {
+      "severity": "warning",
+    },
+    "when": "neovim.mode == 'normal && editorTextFocus",
+  },
+  {
+    "key": "[w",
+    "command": "editor.action.marker.prevInFiles",
+    "args": {
+      "severity": "warning",
+    },
+    "when": "neovim.mode == 'normal && editorTextFocus",
+  },
+  // Terminal
+  {
+    "key": "space f t",
+    "command": "workbench.action.terminal.focus",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space t n",
+    "command": "workbench.action.terminal.new",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "neovim.mode == 'normal'",
+  },
+  // UI Toggles (LazyVim's <space>u* mappings)
+  {
+    "key": "space u l",
+    "command": "settings.cycle.lineNumbers",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space u r",
+    "command": "editor.action.toggleRenderWhitespace",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space u s",
+    "command": "editor.action.toggleWordWrap",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space u d",
+    "command": "workbench.actions.view.problems",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space u t",
+    "command": "workbench.action.selectTheme",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space u z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space u i",
+    "command": "settings.cycle.guideIndentation",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Debug
+  {
+    "key": "space d b",
+    "command": "editor.debug.action.toggleBreakpoint",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space d a",
+    "command": "workbench.action.debug.start",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space d c",
+    "command": "workbench.action.debug.continue",
+    "when": "neovim.mode == 'normal' && inDebugMode && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space d o",
+    "command": "workbench.action.debug.stepOver",
+    "when": "neovim.mode == 'normal' && inDebugMode && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space d i",
+    "command": "workbench.action.debug.stepInto",
+    "when": "neovim.mode == 'normal' && inDebugMode && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space d shift+o",
+    "command": "workbench.action.debug.stepOut",
+    "when": "neovim.mode == 'normal' && inDebugMode && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space d t",
+    "command": "workbench.action.debug.stop",
+    "when": "neovim.mode == 'normal' && inDebugMode && (editorTextFocus || !inputFocus)",
+  },
+  // QuickFix list - maps to Problems panel in VS Code
+  {
+    "key": "space x q",
+    "command": "workbench.panel.markers.view.focus",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "]q",
+    "command": "editor.action.marker.next",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  {
+    "key": "[q",
+    "command": "editor.action.marker.prev",
+    "when": "neovim.mode == 'normal' && editorTextFocus",
+  },
+  // Other useful keybindings
+  {
+    "key": "space l",
+    "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "neovim.mode == 'normal' && inQuickOpen && !inputFocus",
+  },
+  {
+    "key": "space w w",
+    "command": "workbench.action.focusNextGroup",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+  // Search results navigation - vim style
+  {
+    "key": "j",
+    "command": "search.focus.nextSearchResult",
+    "when": "hasSearchResult && searchViewletFocus",
+  },
+  {
+    "key": "k",
+    "command": "search.focus.previousSearchResult",
+    "when": "hasSearchResult && searchViewletFocus",
+  },
+  {
+    "key": "enter",
+    "command": "search.action.openResult",
+    "when": "hasSearchResult && searchViewletFocus",
+  },
+  {
+    "key": "escape",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "searchViewletFocus",
+  },
+  // Move lines (Alt+j/k like LazyVim)
+  {
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly",
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly",
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "workbench.action.chat.openAgent",
+    "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden",
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-workbench.action.chat.openAgent",
+    "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden",
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active",
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "-workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active",
+  },
+  // Which Key
+  // {
+  //   "key": "space w k",
+  //   "command": "whichKey.show",
+  //   "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  // }
+  {
+    "key": "space a a",
+    "command": "workbench.action.chat.toggle",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus) && workbench.panel.chat.view.copilot.active",
+  },
+  {
+    "key": "space o b",
+    "command": "simpleBrowser.show",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)",
+  },
+]

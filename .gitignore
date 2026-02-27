@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Tmux plugins (installed via TPM)
+tmux/plugins/
+
+# Oh My Zsh (installed separately)
+.oh-my-zsh/
+
+# Node/NVM artifacts
+.nvm/
+node_modules/
+
+# Secrets — never commit these
+.env
+.env.*
+*.pem
+*.key
+id_rsa*

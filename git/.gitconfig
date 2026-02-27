@@ -1,0 +1,38 @@
+[user]
+	name = Gabriel Rivera
+	email = gabriel@worksimpli.io
+
+[core]
+	editor = nvim
+	pager = less
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[alias]
+	s = status
+	co = checkout
+	br = branch
+	ci = commit
+	lg = log --oneline --graph --decorate --all
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	amend = commit --amend --no-edit
+
+[color]
+	ui = auto
+
+[diff]
+	colorMoved = default
+
+[merge]
+	conflictstyle = diff3
+
+[rerere]
+	enabled = true

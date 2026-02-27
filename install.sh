@@ -1,103 +1,108 @@
 #!/usr/bin/env bash
+# =============================================================================
+# Dotfiles Installer
+# =============================================================================
+# One-liner install:
+#   bash <(curl -fsSL https://raw.githubusercontent.com/Gabriel-Rivera-Work/dotfiles/main/install.sh)
+# =============================================================================
 set -e
 
 DOTFILES_DIR="$HOME/dotfiles"
-REPO_URL="https://github.com/gabrielrivera/dotfiles.git"
+REPO_URL="https://github.com/Gabriel-Rivera-Work/dotfiles.git"
 
 echo "🚀 Starting dotfiles installation..."
 
+# ---- Prerequisites ----
 if ! command -v git &>/dev/null; then
-  echo "❌ Git is not installed. Please install git first."
+  echo "❌ Git is not installed. Please install Xcode CLI tools:"
+  echo "   xcode-select --install"
   exit 1
 fi
 
+# ---- Clone or pull ----
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "📥 Cloning dotfiles repository..."
   git clone "$REPO_URL" "$DOTFILES_DIR" || {
-    echo "❌ Failed to clone repository. Please check the URL or your internet connection."
+    echo "❌ Failed to clone repository."
     exit 1
   }
 else
-  echo "📂 Dotfiles directory already exists. Pulling latest changes..."
+  echo "📂 Dotfiles directory exists. Pulling latest changes..."
   cd "$DOTFILES_DIR"
-  git pull || echo "⚠️  Warning: Could not pull latest changes. Continuing with existing files..."
+  git pull || echo "⚠️  Could not pull latest. Continuing with existing files..."
 fi
 
 cd "$DOTFILES_DIR"
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  if ! command -v brew &>/dev/null; then
-    echo "🍺 Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    if [[ $(uname -m) == "arm64" ]]; then
-      echo "🔧 Adding Homebrew to PATH for Apple Silicon..."
-      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>"$HOME/.zprofile"
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-  fi
-
-  echo "📦 Installing packages with Homebrew..."
-  bash "$DOTFILES_DIR/brew_install.sh"
-else
-  echo "⚠️  Not on macOS. Skipping Homebrew installation."
-  echo "   Please install required packages manually:"
-  echo "   - neovim, tmux, starship, fzf, ripgrep, fd, eza, zoxide, lazygit"
+# ---- macOS only ----
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  echo "⚠️  Not on macOS. This dotfiles repo is designed for macOS."
+  exit 1
 fi
 
-echo "🔗 Creating symlinks..."
-mkdir -p ~/.config
-
-if [ -e ~/.config/ghostty ]; then
-  echo "   Backing up existing ghostty config..."
-  mv ~/.config/ghostty ~/.config/ghostty.backup.$(date +%Y%m%d_%H%M%S)
-fi
-ln -sf "$DOTFILES_DIR/ghostty" ~/.config/ghostty
-echo "   ✓ Ghostty config linked"
-
-if [ -e ~/.config/nvim ]; then
-  echo "   Backing up existing nvim config..."
-  mv ~/.config/nvim ~/.config/nvim.backup.$(date +%Y%m%d_%H%M%S)
-fi
-ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
-echo "   ✓ Nvim config linked"
-
-if [ -e ~/.config/starship.toml ]; then
-  echo "   Backing up existing starship config..."
-  mv ~/.config/starship.toml ~/.config/starship.toml.backup.$(date +%Y%m%d_%H%M%S)
-fi
-ln -sf "$DOTFILES_DIR/starship.toml" ~/.config/starship.toml
-echo "   ✓ Starship config linked"
-
-if [ -e ~/.config/tmux ]; then
-  echo "   Backing up existing tmux config..."
-  mv ~/.config/tmux ~/.config/tmux.backup.$(date +%Y%m%d_%H%M%S)
-fi
-ln -sf "$DOTFILES_DIR/tmux" ~/.config/tmux
-echo "   ✓ Tmux config linked"
-
-if [ -f "$DOTFILES_DIR/zshrc/.zshrc" ]; then
-  if [ -e ~/.zshrc ]; then
-    echo "   Backing up existing .zshrc..."
-    mv ~/.zshrc ~/.zshrc.backup.$(date +%Y%m%d_%H%M%S)
-  fi
-  ln -sf "$DOTFILES_DIR/zshrc/.zshrc" ~/.zshrc
-  echo "   ✓ Zsh config linked"
-fi
-
-if [ -d "$DOTFILES_DIR/tmux/plugins/tpm" ]; then
-  echo "✓ TPM already installed"
-else
-  echo "📦 Installing Tmux Plugin Manager (TPM)..."
-  mkdir -p "$DOTFILES_DIR/tmux/plugins"
-  git clone https://github.com/tmux-plugins/tpm "$DOTFILES_DIR/tmux/plugins/tpm"
-fi
-
+# ---- Step 1: Homebrew & packages ----
 echo ""
+echo "━━━ Step 1/5: Homebrew & Packages ━━━"
+bash "$DOTFILES_DIR/scripts/brew_install.sh"
+
+# ---- Step 2: Symlinks ----
+echo ""
+echo "━━━ Step 2/5: Symlinks ━━━"
+bash "$DOTFILES_DIR/scripts/create_symlinks.sh"
+
+# ---- Step 3: macOS System Preferences ----
+echo ""
+echo "━━━ Step 3/5: macOS System Preferences ━━━"
+read -p "Apply macOS system preferences? (y/N) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  bash "$DOTFILES_DIR/macos/defaults.sh"
+else
+  echo "  Skipped macOS defaults. You can run it later:"
+  echo "    bash ~/dotfiles/macos/defaults.sh"
+fi
+
+# ---- Step 4: Oh My Zsh ----
+echo ""
+echo "━━━ Step 4/5: Oh My Zsh ━━━"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "📦 Installing Oh My Zsh..."
+  RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo "  ✓ Oh My Zsh already installed"
+fi
+
+# Install zsh-syntax-highlighting plugin if missing
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+  echo "📦 Installing zsh-syntax-highlighting plugin..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+    "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+else
+  echo "  ✓ zsh-syntax-highlighting already installed"
+fi
+
+# ---- Step 5: Tmux Plugin Manager ----
+echo ""
+echo "━━━ Step 5/5: Tmux Plugin Manager ━━━"
+TPM_DIR="$DOTFILES_DIR/tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+  echo "📦 Installing TPM..."
+  mkdir -p "$DOTFILES_DIR/tmux/plugins"
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+else
+  echo "  ✓ TPM already installed"
+fi
+
+# ---- Done ----
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "✅ Installation complete!"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 echo "📝 Next steps:"
-echo "   1. Restart your terminal or run: source ~/.zshrc"
-echo "   2. Open tmux and press prefix + I to install tmux plugins"
-echo "   3. Open nvim - plugins will install automatically"
+echo "   1. Restart your terminal (or: source ~/.zshrc)"
+echo "   2. Open tmux → press prefix + I to install plugins"
+echo "   3. Open nvim → plugins auto-install via Lazy.nvim"
+echo "   4. Open VS Code → extensions install via brew bundle"
 echo ""

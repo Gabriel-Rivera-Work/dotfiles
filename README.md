@@ -1,99 +1,126 @@
 # Dotfiles
 
-These are my personal dotfiles for setting up a development environment on macOS. They include configurations for Neovim, Ghostty, Starship, Tmux, and other tools.
+Personal dotfiles for macOS — synced between a MacBook Pro M3 (work) and Mac Mini M4 (personal).
 
-## Quick Installation
-
-Run this one-liner to install everything on a fresh machine:
+## Quick Install
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/your-username/dotfiles/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Gabriel-Rivera-Work/dotfiles/main/install.sh)
 ```
 
-Or clone and install manually:
+Or clone manually:
 
 ```bash
-git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+git clone https://github.com/Gabriel-Rivera-Work/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
 ```
 
-The installation script will:
+The installer will:
 
-- Clone the dotfiles repository (if not already present)
-- Install Homebrew (macOS only)
-- Install all required packages and applications
-- Create symlinks for all configuration files (backing up existing configs)
-- Install Tmux Plugin Manager (TPM)
-
-## Post-Installation
-
-After running the installation script:
-
-1. **Restart your terminal** or run:
-
-   ```bash
-   source ~/.zshrc
-   ```
-
-2. **Install Tmux plugins:**
-   - Open tmux: `tmux`
-   - Press `prefix + I` (default prefix is `Ctrl+b`) to install plugins
-
-3. **Open Neovim:**
-   - Run `nvim`
-   - Plugins will install automatically via Lazy.nvim
-
-## Manual Installation
-
-If you prefer to install components individually:
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/gabyriv/dotfiles.git ~/dotfiles
-   ```
-
-2. **Install Homebrew packages:**
-
-   ```bash
-   cd ~/dotfiles
-   ./brew_install.sh
-   ```
-
-3. **Create symlinks:**
-
-   ```bash
-   ./create_symlinks.sh
-   ```
+1. Install Homebrew + all packages/casks/fonts from the Brewfile
+2. Create symlinks for all config files (with automatic backups)
+3. Optionally apply macOS System Preferences (`defaults write`)
+4. Install Oh My Zsh + zsh-syntax-highlighting
+5. Install Tmux Plugin Manager (TPM)
 
 ## What's Included
 
-## Configuration
+```
+~/dotfiles/
+├── Brewfile              # Homebrew packages, casks, fonts, VS Code extensions
+├── install.sh            # Main installer (run this on a fresh machine)
+├── .gitignore
+├── .vimrc                # Vim config (fzf integration)
+├── starship.toml         # Starship prompt theme
+│
+├── ghostty/config        # Ghostty terminal (Catppuccin Mocha)
+├── nvim/                 # Neovim (LazyVim-based)
+├── tmux/.tmux.conf       # Tmux (Catppuccin, vim-tmux-navigator)
+├── zshrc/.zshrc          # Zsh (Oh My Zsh, aliases, tools)
+│
+├── vscode/
+│   ├── settings.json     # VS Code settings (Neovim, Copilot, theme)
+│   └── keybindings.json  # VS Code keybindings (LazyVim-style)
+│
+├── git/.gitconfig        # Git config (aliases, merge, rerere)
+├── karabiner/            # Karabiner-Elements (Caps Lock → Escape)
+├── yazi/yazi.toml        # Yazi file manager
+│
+├── macos/defaults.sh     # macOS System Preferences script
+│
+└── scripts/
+    ├── brew_install.sh   # Homebrew installer
+    ├── create_symlinks.sh # Symlink creator
+    └── sync.sh           # Capture current settings → dotfiles repo
+```
+
+## Keeping Settings in Sync
+
+After changing any settings on your work Mac, run:
+
+```bash
+bash ~/dotfiles/scripts/sync.sh
+```
+
+This captures your current Brewfile, VS Code settings, and Karabiner config into the repo. Then commit and push:
+
+```bash
+cd ~/dotfiles && git add -A && git commit -m "sync settings" && git push
+```
+
+On your personal Mac, pull the latest:
+
+```bash
+cd ~/dotfiles && git pull
+```
+
+## Post-Installation
+
+1. **Restart your terminal** or `source ~/.zshrc`
+2. **Tmux:** open tmux → press `Ctrl+s` then `I` to install plugins
+3. **Neovim:** open `nvim` → plugins auto-install via Lazy.nvim
+4. **VS Code:** extensions are installed by `brew bundle`
+
+## Key Tool Configs
+
+### Shell (Zsh)
+
+- **Prompt:** Starship
+- **Framework:** Oh My Zsh with git, zoxide, zsh-syntax-highlighting
+- **Completions:** Carapace
+- **Aliases:** `n` (nvim), `c` (code), `ls` (eza), `cd` (zoxide), `lg` (lazygit), `buu` (brew update+upgrade)
 
 ### Neovim
 
-This configuration uses [LazyVim](https://lazyvim.github.io/) as a base and includes a variety of plugins for a better development experience.
-
+- **Base:** LazyVim
 - **Theme:** Catppuccin
-- **Plugins:**
-  - [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim)
-  - [codesnap.nvim](https://github.com/mistricky/codesnap.nvim)
-  - [screenkey.nvim](https://github.com/NStefan002/screenkey.nvim)
-  - [snacks.nvim](https://www.google.com/search?q=https://github.com/mrded/snacks.nvim)
-  - [vim-test](https://github.com/vim-test/vim-test)
-  - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+- **Plugins:** codecompanion, codesnap, screenkey, snacks, vim-test, vim-tmux-navigator
+
+### VS Code
+
+- **Theme:** Default Dark Modern / Aura Dark
+- **Font:** DM Mono, 16px, 1.8 line height
+- **Neovim integration** with LazyVim-style keybindings (space leader)
+- **Copilot** with custom code generation instructions
+- **Key extensions:** GitLens, Prettier, ESLint, ErrorLens, Tailwind CSS
 
 ### Ghostty
 
-The `ghostty/config` file sets the following options:
-
 - **Theme:** Catppuccin Mocha
-- **Font:** GeistMono NFM Black
-- **Font size:** 19
-- **Background opacity:** 0.7
-- **Background blur:** 50
+- **Font:** GeistMono NFM Black, size 19
+- **Background:** 0.7 opacity with blur
 
-### Starship
+### Tmux
 
-The `starship.toml` file contains the configuration for the Starship cross-shell prompt, including custom symbols for different tools and environments.
+- **Prefix:** `Ctrl+s`
+- **Theme:** Catppuccin Mocha
+- **Navigation:** vim-tmux-navigator
+
+### macOS Defaults
+
+The `macos/defaults.sh` script sets preferences for: fast key repeat, tap-to-click, Dock auto-hide, Finder show-all-files, column view, screenshots to ~/Desktop/Screenshots, and more.
+
+### Karabiner-Elements
+
+- Caps Lock → Escape (system-wide)
