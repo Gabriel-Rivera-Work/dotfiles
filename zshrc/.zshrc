@@ -35,7 +35,7 @@ alias c="code"
 
 # Eza
 alias ls="eza -l --icons --git"
-alias "ls -a"="eza -l --icons --git -a"
+alias lsa="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias ltree="eza --tree --level=2  --icons --git"
 
@@ -48,9 +48,13 @@ alias lg="lazygit"
 # Brew
 alias buu="brew update && brew upgrade && brew cleanup"
 
+# Reset Kanata
+alias kanata-reset="sudo launchctl unload /Library/LaunchDaemons/com.kanata.daemon.plist && sudo launchctl load /Library/LaunchDaemons/com.kanata.daemon.plist"
+alias kanata-load="sudo launchctl load /Library/LaunchDaemons/com.kanata.daemon.plist"
+alias kanata-unload="sudo launchctl unload /Library/LaunchDaemons/com.kanata.daemon.plist"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . "$HOME/.local/bin/env"
-
