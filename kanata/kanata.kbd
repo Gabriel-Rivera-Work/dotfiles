@@ -11,29 +11,71 @@
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
-(deftemplate charmod (char mod)
-  (switch
-    ((key-timing 3 less-than 250)) $char break
-    () (tap-hold-release 100 200 $char $mod) break
+(defvirtualkeys
+  to-base (layer-switch base)
+)
+
+(defvar
+  tot 220
+)
+
+(deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
+  (tap-hold $timeouttap $timeouthold
+    (multi $keytap @.tp)
+    $keyhold
   )
 )
 
-(deflayer base
-  brdn brup f3   f4   f5   f6   prev pp   next mute vold volu
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @sc  '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+(deftemplate homerowmodfiltered (timeouttap timeouthold keytap keyhold typinglist)
+  (tap-hold-release-keys $timeouttap $timeouthold
+    (multi $keytap @.tp)
+    $keyhold
+    $typinglist
+  )
 )
 
 (defalias
-  a  (t! charmod a lmet)
-  s  (t! charmod s lalt)
-  d  (t! charmod d lsft)
-  f  (t! charmod f lctl)
-  j  (t! charmod j rctl)
-  k  (t! charmod k rsft)
-  l  (t! charmod l ralt)
-  sc (t! charmod ; rmet)
+  .tp (switch
+    () (multi
+          (layer-switch typing)
+          (on-idle 55 tap-vkey to-base)
+       ) break
+  )
+  .spc-typing (multi (layer-switch base) spc)
+)
+
+(deflayermap (base)
+  f1 brdn f2 brup f3 f3 f4 f4 f5 f5 f6 f6
+  f7 prev f8 pp f9 next f10 mute f11 vold f12 volu
+  caps esc rmet (multi lctl lalt lmet lsft)
+
+  ;; homerow mods with per-finger timeouts
+  d (t! homerowmod $tot 160 d lsft)
+  k (t! homerowmod $tot 160 k rsft)
+  f (t! homerowmod $tot 250 f lctl)
+  j (t! homerowmod $tot 250 j rctl)
+  s (t! homerowmod $tot 200 s lalt)
+  l (t! homerowmod $tot 200 l ralt)
+  a (t! homerowmodfiltered $tot 350 a lmet (e s w))
+  ; (t! homerowmod $tot 350 ; (multi lctl lalt lmet lsft))
+
+  ;; every letter triggers the typing layer
+  q (multi q @.tp) w (multi w @.tp) e (multi e @.tp)
+  r (multi r @.tp) t (multi t @.tp) y (multi y @.tp)
+  u (multi u @.tp) i (multi i @.tp) o (multi o @.tp)
+  p (multi p @.tp) g (multi g @.tp) h (multi h @.tp)
+  z (multi z @.tp) x (multi x @.tp) c (multi c @.tp)
+  v (multi v @.tp) b (multi b @.tp) n (multi n @.tp)
+  m (multi m @.tp)
+
+  spc @.spc-typing
+)
+
+(deflayermap (typing)
+  a a b b c c d d e e f f g g h h i i j j k k l l
+  m m n n o o p p q q r r s s t t u u v v w w x x
+  y y z z
+  spc @.spc-typing
+  rmet (multi lctl lalt lmet lsft)
+  caps XX
 )
