@@ -268,7 +268,7 @@
   // Search
   {
     "key": "space s s",
-    "command": "workbench.action.findInFiles",
+    "command": "workbench.action.showAllSymbols",
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
   },
   {
@@ -401,7 +401,7 @@
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "neovim.mode == 'normal'"
   },
-  // UI Toggles (LazyVim's <space>u* mappings)
+  // UI Toggles
   {
     "key": "space u l",
     "command": "settings.cycle.relativeLineNumbers",

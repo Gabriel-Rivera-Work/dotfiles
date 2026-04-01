@@ -16,6 +16,9 @@
   "workbench.layoutControl.enabled": false,
   "workbench.browser.showInTitleBar": false,
   "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "off",
+  "breadcrumbs.icons": false,
+  "breadcrumbs.symbolSortOrder": "position",
 
   "workbench.colorCustomizations": {
     "editor.lineHighlightBackground": "#ffffff08",
@@ -42,7 +45,7 @@
     "activityBar.border": "#0000",
     "scrollbarSlider.background": "#0000",
     "scrollbarSlider.hoverBackground": "#0000",
-    "scrollbarSlider.activeBackground": "#0000"
+    "scrollbarSlider.activeBackground": "#0000",
   },
 
   // ========== Editor Basics ==========
@@ -88,14 +91,14 @@
     "**/.git/subtree-cache/**": true,
     "**/.hg/store/**": true,
     "**/node_modules/**": true,
-    "**/dist/**": true
+    "**/dist/**": true,
   },
   "search.maxResults": 1000,
 
   // ========== Language-specific Formatters ==========
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
@@ -181,10 +184,10 @@
     "SignColumn": { "link": "SignColumn" },
     "StatusLine": { "link": "StatusLine" },
     "NormalFloat": { "link": "NormalFloat" },
-    "Visual": { "link": "Visual" }
+    "Visual": { "link": "Visual" },
   },
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "asvetliakov.vscode-neovim": 1,
   },
 
   // ========== Token Colors ==========
@@ -193,23 +196,23 @@
       {
         "scope": "comment",
         "settings": {
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "envKeys",
         "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
         "settings": {
-          "foreground": "#19354900"
-        }
+          "foreground": "#19354900",
+        },
       },
       {
         "scope": "keyword.other.dotenv",
         "settings": {
-          "foreground": "#FF000000"
-        }
-      }
-    ]
+          "foreground": "#FF000000",
+        },
+      },
+    ],
   },
 
   // ========== GitHub Copilot & Chat ==========
@@ -218,7 +221,7 @@
     "plaintext": true,
     "markdown": true,
     "scminput": false,
-    "yaml": true
+    "yaml": true,
   },
   "github.copilot.chat.codeGeneration.instructions": [
     { "text": "Write clean, simple, readable code." },
@@ -228,50 +231,50 @@
     { "text": "Focus on core functionality before optimization." },
     { "text": "Use clear, consistent naming." },
     {
-      "text": "Think thoroughly before coding; write 2-3 reasoning paragraphs."
+      "text": "Think thoroughly before coding; write 2-3 reasoning paragraphs.",
     },
     { "text": "ALWAYS write simple, clean and modular code." },
     {
-      "text": "Use clear and easy-to-understand language; write in short sentences."
+      "text": "Use clear and easy-to-understand language; write in short sentences.",
     },
     {
-      "text": "ALWAYS use the latest and most up-to-date information available; use the web search functionality to find the latest information. REMEMBER ALWAYS to use the latest information available."
+      "text": "ALWAYS use the latest and most up-to-date information available; use the web search functionality to find the latest information. REMEMBER ALWAYS to use the latest information available.",
     },
     {
-      "text": "DO NOT JUMP TO CONCLUSIONS; consider multiple possible causes before deciding."
+      "text": "DO NOT JUMP TO CONCLUSIONS; consider multiple possible causes before deciding.",
     },
     { "text": "Explain the problem in plain English." },
     {
-      "text": "Make minimal necessary changes, changing as few lines of code as possible."
+      "text": "Make minimal necessary changes, changing as few lines of code as possible.",
     },
     {
-      "text": "In case of strange errors, ask the user to perform a Perplexity web search to find the latest information."
+      "text": "In case of strange errors, ask the user to perform a Perplexity web search to find the latest information.",
     },
     {
-      "text": "Verify each new feature works by telling the user how to test it."
+      "text": "Verify each new feature works by telling the user how to test it.",
     },
     {
-      "text": "DO NOT write complicated and confusing code; opt for the simple & modular approach."
+      "text": "DO NOT write complicated and confusing code; opt for the simple & modular approach.",
     },
     {
-      "text": "When not sure what to do, tell the user to perform a web search."
+      "text": "When not sure what to do, tell the user to perform a web search.",
     },
     {
-      "text": "Always try to add more helpful and explanatory comments into our code."
+      "text": "Always try to add more helpful and explanatory comments into our code.",
     },
     {
-      "text": "NEVER delete old comments unless they are obviously wrong or obsolete."
+      "text": "NEVER delete old comments unless they are obviously wrong or obsolete.",
     },
     {
-      "text": "Include LOTS of explanatory comments in your code; ALWAYS write well-documented code."
+      "text": "Include LOTS of explanatory comments in your code; ALWAYS write well-documented code.",
     },
     {
-      "text": "Document all changes and their reasoning in the comments you write."
+      "text": "Document all changes and their reasoning in the comments you write.",
     },
     {
-      "text": "When writing comments, use clear and easy-to-understand language; write in short sentences."
+      "text": "When writing comments, use clear and easy-to-understand language; write in short sentences.",
     },
-    { "file": ".github/copilot-instructions.md" }
+    { "file": ".github/copilot-instructions.md" },
   ],
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.nextEditSuggestions.enabled": true,
@@ -279,7 +282,7 @@
 
   // ========== Chat / Instructions Files ==========
   "chat.instructionsFilesLocations": {
-    ".github/instructions": true
+    ".github/instructions": true,
   },
 
   // ========== Project / Misc ==========
@@ -295,23 +298,23 @@
       "id": "lineNumbers",
       "values": [
         { "editor.lineNumbers": "on" },
-        { "editor.lineNumbers": "off" }
-      ]
+        { "editor.lineNumbers": "off" },
+      ],
     },
     {
       "id": "relativeLineNumbers",
       "values": [
         { "editor.lineNumbers": "relative" },
-        { "editor.lineNumbers": "on" }
-      ]
+        { "editor.lineNumbers": "on" },
+      ],
     },
     {
       "id": "guideIndentation",
       "values": [
         { "editor.guides.indentation": true },
-        { "editor.guides.indentation": false }
-      ]
-    }
+        { "editor.guides.indentation": false },
+      ],
+    },
   ],
 
   // ========== Misc / Remaining ==========
@@ -320,13 +323,13 @@
   "window.titleBarStyle": "custom",
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor",
-    "*.opus": "default"
+    "*.opus": "default",
   },
   "telemetry.editStats.enabled": false,
   "telemetry.feedback.enabled": false,
   "dotnetAcquisitionExtension.enableTelemetry": false,
   "files.associations": {
-    ".env*": "dotenv"
+    ".env*": "dotenv",
   },
   "dotenv.enableAutocloaking": true,
   "workbench.preferredDarkColorTheme": "Aura Dark",
@@ -356,6 +359,6 @@
     "*.sqlite3": "${capture}.${extname}-*",
     "*.db3": "${capture}.${extname}-*",
     "*.sdb": "${capture}.${extname}-*",
-    "*.s3db": "${capture}.${extname}-*"
-  }
+    "*.s3db": "${capture}.${extname}-*",
+  },
 }
