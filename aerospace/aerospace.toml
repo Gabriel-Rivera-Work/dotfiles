@@ -1,0 +1,191 @@
+# AeroSpace config for Gabriel
+# Place at: ~/.config/aerospace/aerospace.toml
+#
+# Modifier setup: right-Cmd as hyperkey (cmd-ctrl-alt-shift) via Karabiner/Kanata
+# This config uses that hyperkey combo for all workspace switching.
+#
+# IMPORTANT: After installing, verify bundle IDs for Helium browser.
+# Run in terminal: mdls -name kMDItemCFBundleIdentifier /Applications/Helium.app
+# (or whatever the .app name is) and update if.app-id below if different.
+
+config-version = 2
+
+start-at-login = true
+
+# -------------------------------------------------------------------
+# General settings
+# -------------------------------------------------------------------
+
+# Normalizations (recommended defaults)
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Layout defaults
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+accordion-padding = 30
+
+# Mouse follows focus when switching monitors
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Gaps between windows (adjust to taste)
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.right = 8
+outer.bottom = 10
+outer.top = 8
+
+# -------------------------------------------------------------------
+# App-to-workspace assignments (mnemonic keys)
+# -------------------------------------------------------------------
+# Workspace C: Code (Zed + VS Code)
+# Workspace B: Browser (Zen + Helium)
+# Workspace A: AI (Claude + T3 Code + Codex + ChatGPT)
+# Workspace T: Terminal (Ghostty)
+# Workspace W: Work (Slack + Figma + Asana)
+# -------------------------------------------------------------------
+
+# -- Workspace C: Code --
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace C'
+
+# -- Workspace B: Browser --
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace B'
+
+# Helium browser — verify this bundle ID! (see note at top of file)
+[[on-window-detected]]
+if.app-id = 'computer.helium.browser'
+run = 'move-node-to-workspace B'
+
+# -- Workspace A: AI --
+[[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = 'move-node-to-workspace A'
+
+[[on-window-detected]]
+if.app-id = 'com.t3tools.t3code'
+run = 'move-node-to-workspace A'
+
+# -- Workspace T: Terminal --
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace T'
+
+[[on-window-detected]]
+if.app-id = 'com.cmuxterm.app'
+run = 'move-node-to-workspace T'
+
+# -- Workspace W: Work (Slack + Figma + Asana) --
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace W'
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace W'
+
+# Asana — if you install a desktop wrapper, uncomment and verify bundle ID:
+[[on-window-detected]]
+if.app-id = 'com.electron.Asana'
+run = 'move-node-to-workspace W'
+
+# -- Float system dialogs --
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+# -------------------------------------------------------------------
+# Keybindings — Main mode
+# -------------------------------------------------------------------
+# Uses hyperkey (cmd-ctrl-alt-shift) which you trigger via right-Cmd
+# through Kanata/Karabiner.
+# -------------------------------------------------------------------
+
+[mode.main.binding]
+
+# ===== Workspace switching (hyper + mnemonic letter) =====
+cmd-ctrl-alt-shift-c = 'workspace C' # Code
+cmd-ctrl-alt-shift-b = 'workspace B' # Browser
+cmd-ctrl-alt-shift-a = 'workspace A' # AI (Claude)
+cmd-ctrl-alt-shift-t = 'workspace T' # Terminal
+cmd-ctrl-alt-shift-w = 'workspace W' # Work (Slack, Figma, Asana)
+
+# ===== Move window to workspace (hyper + shift is already maxed out,
+#       so we use a service mode instead — see below) =====
+
+# ===== Focus navigation (hyper + h/j/k/l vim-style) =====
+cmd-ctrl-alt-shift-h = 'focus left'
+cmd-ctrl-alt-shift-j = 'focus down'
+cmd-ctrl-alt-shift-k = 'focus up'
+cmd-ctrl-alt-shift-l = 'focus right'
+
+# ===== Layout controls =====
+cmd-ctrl-alt-shift-x = 'layout tiles horizontal vertical'     # switch tile orientation
+cmd-ctrl-alt-shift-z = 'layout accordion horizontal vertical'
+cmd-ctrl-alt-shift-f = 'fullscreen'
+cmd-ctrl-alt-shift-g = 'layout floating tiling'               # toGgle float
+
+# ===== Resize (hyper + +/-) =====
+cmd-ctrl-alt-shift-equal = 'resize smart +50'
+cmd-ctrl-alt-shift-minus = 'resize smart -50'
+
+# ===== Move window between monitors =====
+cmd-ctrl-alt-shift-i = 'move-node-to-monitor --focus-follows-window --wrap-around next'
+
+# ===== Move workspace to other monitor =====
+cmd-ctrl-alt-shift-o = 'move-workspace-to-monitor --wrap-around next'
+
+# ===== Enter service mode (hyper + s) for less-common operations =====
+cmd-ctrl-alt-shift-s = 'mode service'
+
+# -------------------------------------------------------------------
+# Service mode — for moving windows to workspaces + other operations
+# -------------------------------------------------------------------
+# Enter with: hyper + s
+# Then press a letter to move the focused window to that workspace.
+# Press Esc or Enter to go back to main mode.
+# -------------------------------------------------------------------
+
+[mode.service.binding]
+
+# Move focused window to workspace (same mnemonic keys)
+c = ['move-node-to-workspace C', 'mode main'] # Code
+b = ['move-node-to-workspace B', 'mode main'] # Browser
+a = ['move-node-to-workspace A', 'mode main'] # AI
+t = ['move-node-to-workspace T', 'mode main'] # Terminal
+w = ['move-node-to-workspace W', 'mode main'] # Work
+
+# Move window in direction (rearrange within workspace)
+h = ['move left', 'mode main']
+j = ['move down', 'mode main']
+k = ['move up', 'mode main']
+l = ['move right', 'mode main']
+
+# Join with adjacent window (create splits)
+shift-h = ['join-with left', 'mode main']
+shift-j = ['join-with down', 'mode main']
+shift-k = ['join-with up', 'mode main']
+shift-l = ['join-with right', 'mode main']
+
+# Flatten/reset workspace tree
+r = ['flatten-workspace-tree', 'mode main']
+
+# Reload config
+shift-r = ['reload-config', 'mode main']
+
+# Exit service mode
+esc = 'mode main'
+enter = 'mode main'
