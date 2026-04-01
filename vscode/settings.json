@@ -1,18 +1,24 @@
 {
   // ========== Appearance & Theme ==========
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Aura Dark",
   "workbench.iconTheme": "helium-icon-theme",
   "helium-icon-theme.hidesExplorerArrows": true,
   "workbench.reduceMotion": "on",
   "window.autoDetectColorScheme": true,
-  "window.zoomLevel": 0.8,
+  "window.zoomLevel": 1.8,
+  "window.commandCenter": false,
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.editor.showTabs": "multiple",
   "workbench.tree.enableStickyScroll": false,
+  "workbench.list.smoothScrolling": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.layoutControl.enabled": false,
+  "workbench.browser.showInTitleBar": false,
+  "breadcrumbs.enabled": true,
 
   "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#0000",
+    "editor.lineHighlightBackground": "#ffffff08",
     "editorCursor.background": "#000000",
     "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
     "editorOverviewRuler.selectionHighlightForeground": "#0000",
@@ -34,89 +40,63 @@
     "menu.border": "#0000",
     "titleBar.border": "#0000",
     "activityBar.border": "#0000",
-    "[Vira*]": {
-      "statusBar.debuggingBackground": "#80CBC433",
-      "statusBar.debuggingForeground": "#80CBC4",
-      "toolbar.activeBackground": "#80CBC426",
-      "button.background": "#80CBC4",
-      "button.hoverBackground": "#80CBC4cc",
-      "extensionButton.separator": "#80CBC433",
-      "extensionButton.background": "#80CBC414",
-      "extensionButton.foreground": "#80CBC4",
-      "extensionButton.hoverBackground": "#80CBC433",
-      "extensionButton.prominentForeground": "#80CBC4",
-      "extensionButton.prominentBackground": "#80CBC414",
-      "extensionButton.prominentHoverBackground": "#80CBC433",
-      "activityBarBadge.background": "#80CBC4",
-      "activityBar.activeBorder": "#80CBC4",
-      "activityBarTop.activeBorder": "#80CBC4",
-      "list.inactiveSelectionIconForeground": "#80CBC4",
-      "list.activeSelectionForeground": "#80CBC4",
-      "list.inactiveSelectionForeground": "#80CBC4",
-      "list.highlightForeground": "#80CBC4",
-      "sash.hoverBorder": "#80CBC480",
-      "list.activeSelectionIconForeground": "#80CBC4",
-      "scrollbarSlider.activeBackground": "#80CBC480",
-      "editorSuggestWidget.highlightForeground": "#80CBC4",
-      "textLink.foreground": "#80CBC4",
-      "progressBar.background": "#80CBC4",
-      "pickerGroup.foreground": "#80CBC4",
-      "tab.activeBorder": "#80CBC4",
-      "tab.activeBorderTop": "#80CBC400",
-      "tab.unfocusedActiveBorder": "#80CBC4",
-      "tab.unfocusedActiveBorderTop": "#80CBC400",
-      "tab.activeModifiedBorder": "#80CBC400",
-      "notificationLink.foreground": "#80CBC4",
-      "editorWidget.resizeBorder": "#80CBC4",
-      "editorWidget.border": "#80CBC4",
-      "settings.modifiedItemIndicator": "#80CBC4",
-      "panelTitle.activeBorder": "#80CBC4",
-      "breadcrumb.activeSelectionForeground": "#80CBC4",
-      "menu.selectionForeground": "#80CBC4",
-      "menubar.selectionForeground": "#80CBC4",
-      "editor.findMatchBorder": "#80CBC4",
-      "selection.background": "#80CBC440",
-      "statusBarItem.remoteBackground": "#80CBC414",
-      "statusBarItem.remoteHoverBackground": "#80CBC4",
-      "statusBarItem.remoteForeground": "#80CBC4",
-      "notebook.inactiveFocusedCellBorder": "#80CBC480",
-      "commandCenter.activeBorder": "#80CBC480",
-      "chat.slashCommandForeground": "#80CBC4",
-      "chat.avatarForeground": "#80CBC4",
-      "activityBarBadge.foreground": "#000000",
-      "button.foreground": "#000000",
-      "statusBarItem.remoteHoverForeground": "#000000"
-    }
+    "scrollbarSlider.background": "#0000",
+    "scrollbarSlider.hoverBackground": "#0000",
+    "scrollbarSlider.activeBackground": "#0000"
   },
 
-  "catppuccin-icons.hidesExplorerArrows": true,
-
   // ========== Editor Basics ==========
-  "editor.fontFamily": "'DM Mono', 'Menlo', 'Monaco', 'Courier New', monospace",
+  "editor.fontFamily": "Dank Mono",
   "editor.fontWeight": "normal",
-  "editor.fontSize": 16,
+  "editor.fontSize": 16.5,
   "editor.fontLigatures": false,
-  "editor.lineHeight": 1.8,
+  "editor.cursorStyle": "block",
+  "editor.lineHeight": 1.9,
   "editor.cursorBlinking": "solid",
-  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSmoothCaretAnimation": "off",
   "editor.cursorSurroundingLines": 8,
-  "editor.smoothScrolling": true,
-  "editor.lineNumbers": "on",
+  "editor.smoothScrolling": false,
+  "editor.lineNumbers": "relative",
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
   "editor.stickyScroll.enabled": false,
   "editor.linkedEditing": true,
   "editor.formatOnSave": true,
   "editor.trimAutoWhitespace": true,
-  "editor.renderWhitespace": "selection",
-  "editor.guides.indentation": true,
+  "editor.renderWhitespace": "none",
+  "editor.renderLineHighlight": "all",
+  "editor.matchBrackets": "never",
+  "editor.guides.indentation": false,
+  "editor.guides.highlightActiveIndentation": false,
+  "editor.guides.bracketPairs": false,
+  "editor.bracketPairColorization.enabled": false,
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggestSelection": "first",
-  "editor.tabCompletion": "on",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.folding": false,
+  "editor.codeLens": false,
+  "editor.hover.enabled": "off",
+  "editor.parameterHints.enabled": false,
+  "editor.lightbulb.enabled": "off",
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": false,
+  "editor.dragAndDrop": false,
+  "editor.find.seedSearchStringFromSelection": "never",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+  "search.maxResults": 1000,
 
   // ========== Language-specific Formatters ==========
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
@@ -125,26 +105,35 @@
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "files.associations": { ".env*": "dotenv" },
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.compactFolders": false,
+  "explorer.decorations.badges": false,
+  "explorer.decorations.colors": false,
 
   // ========== Terminal ==========
-  "terminal.integrated.fontFamily": "'DMMono Nerd Font', 'DM Mono', monospace",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "Dank Mono",
+  "terminal.integrated.fontSize": 16.5,
+  "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.fontWeight": "normal",
   "terminal.integrated.stickyScroll.enabled": false,
-  "terminal.integrated.suggest.quickSuggestions": {
-    "commands": "on",
-    "arguments": "on",
-    "unknown": "on"
-  },
-  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.suggest.enabled": false,
+  "terminal.integrated.cursorBlinking": false,
+  "terminal.integrated.smoothScrolling": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+
+  "terminal.external.osxExec": "cmux.app",
 
   // ========== Git ==========
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
+  "git.decorations.enabled": false,
+
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.editorDecoration.template": "${authorName}, ${authorDateAgo}",
+  "git.blame.editorDecoration.disableHover": true,
+  "git.blame.statusBarItem.enabled": false,
 
   // ========== Diff ==========
   "diffEditor.ignoreTrimWhitespace": false,
@@ -153,32 +142,26 @@
   "editor.accessibilitySupport": "off",
 
   // ========== Inlay Hints ==========
-  "editor.inlayHints.enabled": "on",
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.variableTypes.enabled": true,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.variableTypes.enabled": true,
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "python.analysis.inlayHints.callArgumentNames": "all",
-  "python.analysis.inlayHints.variableTypes": true,
-  "python.analysis.inlayHints.functionReturnTypes": true,
-  "python.analysis.inlayHints.pytestParameters": true,
+  "editor.inlayHints.enabled": "off",
+  "js/ts.inlayHints.parameterNames.enabled": "none",
+  "js/ts.inlayHints.variableTypes.enabled": false,
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": false,
+  "js/ts.inlayHints.parameterTypes.enabled": false,
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": false,
+  "python.analysis.inlayHints.callArgumentNames": "off",
+  "python.analysis.inlayHints.variableTypes": false,
+  "python.analysis.inlayHints.functionReturnTypes": false,
+  "python.analysis.inlayHints.pytestParameters": false,
   "python.analysis.typeCheckingMode": "standard",
-  "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
-  "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
-  "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": true,
-  "csharp.inlayHints.enableInlayHintsForTypes": true,
-  "dotnet.inlayHints.enableInlayHintsForIndexerParameters": true,
-  "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
-  "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": true,
-  "dotnet.inlayHints.enableInlayHintsForOtherParameters": true,
-  "dotnet.inlayHints.enableInlayHintsForParameters": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": false,
+  "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": false,
+  "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": false,
+  "csharp.inlayHints.enableInlayHintsForTypes": false,
+  "dotnet.inlayHints.enableInlayHintsForIndexerParameters": false,
+  "dotnet.inlayHints.enableInlayHintsForLiteralParameters": false,
+  "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": false,
+  "dotnet.inlayHints.enableInlayHintsForOtherParameters": false,
+  "dotnet.inlayHints.enableInlayHintsForParameters": false,
   "dotnet.inlayHints.suppressInlayHintsForParametersThatDifferOnlyBySuffix": true,
   "dotnet.inlayHints.suppressInlayHintsForParametersThatMatchArgumentName": true,
   "dotnet.inlayHints.suppressInlayHintsForParametersThatMatchMethodIntent": true,
@@ -186,9 +169,8 @@
   // ========== Neovim (VSCode Neovim) ==========
   "keyboard.dispatch": "keyCode",
   "vscode-neovim.useWSL": false,
-  "vscode-neovim.loglevel": "error",
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-  "vscode-neovim.InitVimPaths.darwin": "~/.config/nvim/init.lua",
+  "vscode-neovim.InitVimPaths.darwin": "~/dotfiles/nvim/init.lua",
   "vscode-neovim.highlightGroups.highlights": {
     "Directory": { "link": "Directory" },
     "IncSearch": { "link": "IncSearch" },
@@ -210,16 +192,22 @@
     "textMateRules": [
       {
         "scope": "comment",
-        "settings": { "fontStyle": "italic" }
+        "settings": {
+          "fontStyle": "italic"
+        }
       },
       {
         "name": "envKeys",
         "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
-        "settings": { "foreground": "#19354900" }
+        "settings": {
+          "foreground": "#19354900"
+        }
       },
       {
         "scope": "keyword.other.dotenv",
-        "settings": { "foreground": "#FF000000" }
+        "settings": {
+          "foreground": "#FF000000"
+        }
       }
     ]
   },
@@ -229,6 +217,7 @@
     "*": true,
     "plaintext": true,
     "markdown": true,
+    "scminput": false,
     "yaml": true
   },
   "github.copilot.chat.codeGeneration.instructions": [
@@ -238,67 +227,67 @@
     { "text": "Test after every meaningful change." },
     { "text": "Focus on core functionality before optimization." },
     { "text": "Use clear, consistent naming." },
-    { "text": "Think thoroughly before coding; write 2-3 reasoning paragraphs." },
+    {
+      "text": "Think thoroughly before coding; write 2-3 reasoning paragraphs."
+    },
     { "text": "ALWAYS write simple, clean and modular code." },
-    { "text": "Use clear and easy-to-understand language; write in short sentences." },
-    { "text": "ALWAYS use the latest and most up-to-date information available." },
-    { "text": "DO NOT JUMP TO CONCLUSIONS; consider multiple possible causes before deciding." },
+    {
+      "text": "Use clear and easy-to-understand language; write in short sentences."
+    },
+    {
+      "text": "ALWAYS use the latest and most up-to-date information available; use the web search functionality to find the latest information. REMEMBER ALWAYS to use the latest information available."
+    },
+    {
+      "text": "DO NOT JUMP TO CONCLUSIONS; consider multiple possible causes before deciding."
+    },
     { "text": "Explain the problem in plain English." },
-    { "text": "Make minimal necessary changes, changing as few lines of code as possible." },
-    { "text": "Verify each new feature works by telling the user how to test it." },
-    { "text": "DO NOT write complicated and confusing code; opt for the simple & modular approach." },
-    { "text": "Always try to add more helpful and explanatory comments into our code." },
-    { "text": "NEVER delete old comments unless they are obviously wrong or obsolete." },
-    { "text": "Include LOTS of explanatory comments in your code; ALWAYS write well-documented code." },
-    { "text": "Document all changes and their reasoning in the comments you write." },
-    { "text": "When writing comments, use clear and easy-to-understand language; write in short sentences." },
+    {
+      "text": "Make minimal necessary changes, changing as few lines of code as possible."
+    },
+    {
+      "text": "In case of strange errors, ask the user to perform a Perplexity web search to find the latest information."
+    },
+    {
+      "text": "Verify each new feature works by telling the user how to test it."
+    },
+    {
+      "text": "DO NOT write complicated and confusing code; opt for the simple & modular approach."
+    },
+    {
+      "text": "When not sure what to do, tell the user to perform a web search."
+    },
+    {
+      "text": "Always try to add more helpful and explanatory comments into our code."
+    },
+    {
+      "text": "NEVER delete old comments unless they are obviously wrong or obsolete."
+    },
+    {
+      "text": "Include LOTS of explanatory comments in your code; ALWAYS write well-documented code."
+    },
+    {
+      "text": "Document all changes and their reasoning in the comments you write."
+    },
+    {
+      "text": "When writing comments, use clear and easy-to-understand language; write in short sentences."
+    },
     { "file": ".github/copilot-instructions.md" }
   ],
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.nextEditSuggestions.enabled": true,
-  "github.copilot.chat.agent.thinkingTool": true,
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  "github.copilot.chat.copilotMemory.enabled": true,
-  "github.copilot.selectedCompletionModel": "",
-  "chat.edits2.enabled": true,
-  "chat.todoListTool.enabled": true,
+
+  // ========== Chat / Instructions Files ==========
   "chat.instructionsFilesLocations": {
     ".github/instructions": true
   },
-  "chat.agentSessionsViewLocation": "view",
-  "chat.mcp.gallery.enabled": true,
-  "chat.viewSessions.orientation": "stacked",
 
   // ========== Project / Misc ==========
-  "projectManager.git.baseFolders": ["~/Projects"],
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "window.density.editorTabHeight": "default",
-  "window.titleBarStyle": "custom",
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.hideStatusBar": false,
-  "mdb.mcp.server": "prompt",
-  "workbench.editor.empty.hint": "hidden",
-  "workbench.activityBar.location": "top",
-  "workbench.preferredDarkColorTheme": "Aura Dark",
-  "workbench.browser.openLocalhostLinks": true,
-  "workbench.editorAssociations": {
-    "*.copilotmd": "vscode.markdown.preview.editor",
-    "*.opus": "default"
-  },
-  "simpleBrowser.useIntegratedBrowser": true,
-  "dotenv.enableAutocloaking": true,
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "claudeCode.preferredLocation": "panel",
-  "claudeCode.useTerminal": true,
-
-  // ========== Telemetry (all off) ==========
-  "telemetry.editStats.enabled": false,
-  "telemetry.feedback.enabled": false,
-  "dotnetAcquisitionExtension.enableTelemetry": false,
-  "code-runner.enableAppInsights": false,
 
   // ========== Cycler Extension ==========
   "settings.cycle": [
@@ -310,11 +299,63 @@
       ]
     },
     {
+      "id": "relativeLineNumbers",
+      "values": [
+        { "editor.lineNumbers": "relative" },
+        { "editor.lineNumbers": "on" }
+      ]
+    },
+    {
       "id": "guideIndentation",
       "values": [
         { "editor.guides.indentation": true },
         { "editor.guides.indentation": false }
       ]
     }
-  ]
+  ],
+
+  // ========== Misc / Remaining ==========
+  "chat.mcp.gallery.enabled": true,
+  "workbench.editor.empty.hint": "hidden",
+  "window.titleBarStyle": "custom",
+  "workbench.editorAssociations": {
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.opus": "default"
+  },
+  "telemetry.editStats.enabled": false,
+  "telemetry.feedback.enabled": false,
+  "dotnetAcquisitionExtension.enableTelemetry": false,
+  "files.associations": {
+    ".env*": "dotenv"
+  },
+  "dotenv.enableAutocloaking": true,
+  "workbench.preferredDarkColorTheme": "Aura Dark",
+  "github.copilot.chat.copilotMemory.enabled": true,
+  "workbench.browser.openLocalhostLinks": true,
+  "github.copilot.selectedCompletionModel": "",
+  "editor.tabCompletion": "on",
+  "chat.viewSessions.orientation": "stacked",
+  "workbench.activityBar.location": "top",
+  "scm.diffDecorations": "gutter",
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "*.cs": "${capture}.designer.cs,${capture}.g.cs,${capture}.generated.cs,${capture}.run.json,${capture}.settings.json,${capture}.settings.*.json",
+    "*.csproj": "${capture}.csproj.user",
+    "*.json": "${capture}.Development.json",
+    "*.cshtml": "${capture}.cshtml.cs,${capture}.cshtml.css",
+    "*.razor": "${capture}.razor.cs,${capture}.razor.css",
+    "*.resx": "${capture}.Designer.cs",
+    "*.xaml": "${capture}.xaml.cs",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  }
 }
