@@ -60,10 +60,114 @@ local function getTodos(opts)
   return todos
 end
 
+local picker_exclude = {
+  "**/.git/**",
+  "**/node_modules/**",
+  "**/__pycache__/**",
+  "**/.pytest_cache/**",
+  "**/.mypy_cache/**",
+  "**/dist/**",
+  "**/build/**",
+  "**/*.pyc",
+}
+
+local explorer_exclude = {
+  "**/node_modules/**",
+  "**/__pycache__/**",
+  "**/.pytest_cache/**",
+  "**/.mypy_cache/**",
+  "**/dist/**",
+  "**/build/**",
+  "**/*.pyc",
+}
+
+local env_include = {
+  ".env",
+  ".env.*",
+  "**/.env",
+  "**/.env.*",
+}
+
 return {
   "snacks.nvim",
+  keys = {
+    {
+      "<leader><space>",
+      function()
+        Snacks.picker.files({ cwd = LazyVim.root.git() })
+      end,
+      desc = "Find Files (Git Root)",
+    },
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.files({ cwd = LazyVim.root.git() })
+      end,
+      desc = "Find Files (Git Root)",
+    },
+    {
+      "<leader>e",
+      function()
+        Snacks.picker.explorer({ cwd = LazyVim.root.git() })
+      end,
+      desc = "Explorer (Git Root)",
+    },
+    {
+      "<leader>fe",
+      function()
+        Snacks.picker.explorer({ cwd = LazyVim.root.git() })
+      end,
+      desc = "Explorer (Git Root)",
+    },
+    {
+      "<leader>fI",
+      function()
+        Snacks.picker.files({
+          cwd = LazyVim.root.git(),
+          hidden = true,
+          ignored = true,
+          exclude = picker_exclude,
+        })
+      end,
+      desc = "Find Files (with Ignored)",
+    },
+    {
+      "<leader>sI",
+      function()
+        Snacks.picker.grep({
+          cwd = LazyVim.root.git(),
+          hidden = true,
+          ignored = true,
+          exclude = picker_exclude,
+        })
+      end,
+      desc = "Grep (with Ignored)",
+    },
+  },
   opts = {
-    indent = { enabled = true },
+    indent = { enabled = false },
+    picker = {
+      sources = {
+        files = {
+          hidden = true,
+          ignored = false,
+          include = env_include,
+          exclude = picker_exclude,
+        },
+        grep = {
+          hidden = true,
+          ignored = false,
+          include = env_include,
+          exclude = picker_exclude,
+        },
+        explorer = {
+          hidden = true,
+          ignored = false,
+          include = env_include,
+          exclude = explorer_exclude,
+        },
+      },
+    },
     dashboard = {
       preset = {
         header = [[
