@@ -293,27 +293,6 @@
     "command": "editor.action.showHover",
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
   },
-  // LSP Navigation
-  //   {
-  //     "key": "space g d",
-  //     "command": "editor.action.revealDefinition",
-  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
-  //   },
-  //   {
-  //     "key": "space g r",
-  //     "command": "editor.action.goToReferences",
-  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
-  //   },
-  //   {
-  //     "key": "space g i",
-  //     "command": "editor.action.goToImplementation",
-  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
-  //   },
-  //   {
-  //     "key": "space g t",
-  //     "command": "editor.action.goToTypeDefinition",
-  //     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
-  //   },
   // Diagnostics
   {
     "key": "space x d",
@@ -462,12 +441,12 @@
   },
   {
     "key": "]q",
-    "command": "editor.action.marker.next",
+    "command": "search.action.focusNextSearchResult",
     "when": "neovim.mode == 'normal' && editorTextFocus"
   },
   {
     "key": "[q",
-    "command": "editor.action.marker.prev",
+    "command": "search.action.focusPreviousSearchResult",
     "when": "neovim.mode == 'normal' && editorTextFocus"
   },
   // Other useful keybindings
@@ -514,11 +493,6 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+cmd+i",
-    "command": "workbench.action.chat.openAgent",
-    "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
-  },
-  {
     "key": "shift+cmd+i",
     "command": "-workbench.action.chat.openAgent",
     "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
@@ -528,17 +502,12 @@
     "command": "workbench.panel.chat",
     "when": "workbench.panel.chat.view.copilot.active"
   },
-  {
-    "key": "ctrl+cmd+i",
-    "command": "-workbench.panel.chat",
-    "when": "workbench.panel.chat.view.copilot.active"
-  },
   // Which Key
-  // {
-  //   "key": "space w k",
-  //   "command": "whichKey.show",
-  //   "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
-  // }
+  {
+    "key": "space w k",
+    "command": "whichkey.show",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
   {
     "key": "space a a",
     "command": "workbench.action.chat.toggle",
