@@ -1,0 +1,176 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+// Zed keymap - LazyVim-style bindings for Vim mode
+// Place in ~/.config/zed/keymap.json
+//
+// IMPORTANT: Ensure vim_mode is enabled in settings.json:
+//   { "vim_mode": true }
+//
+// For lazygit support, add to your tasks.json:
+//   { "label": "lazygit", "command": "lazygit -p $ZED_WORKTREE_ROOT" }
+//
+// Context rules:
+//   - "Workspace && vim_mode == normal" will NEVER match (vim context is at Editor level)
+//   - Use "Editor && vim_mode == normal" for editor-only bindings
+//   - Use "EmptyPane || SharedScreen" for bindings that work with no editor open
+//   - Add "!menu" to prevent conflicts with autocomplete/command palette
+[
+  // ========== PANE NAVIGATION (ctrl-h/j/k/l) ==========
+  // Works across Editor, Terminal, and Docks (project panel, etc.)
+  {
+    "context": "Dock || Editor || Terminal",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
+  },
+
+  // ========== NORMAL + VISUAL MODE BINDINGS ==========
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // Buffer/Tab Navigation
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+
+      // Hover info (like K in LazyVim)
+      "shift-k": "editor::Hover",
+
+      // Diagnostics navigation
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+
+      // Move lines (Alt+j/k like LazyVim)
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+
+      // Search match navigation
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPreviousMatch",
+    },
+  },
+
+  // ========== LEADER (SPACE) BINDINGS — NORMAL MODE ==========
+  // Uses context pattern that also works when no editor is open (EmptyPane)
+  {
+    "context": "EmptyPane || SharedScreen || vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // ── File operations ──
+      "space space": "file_finder::Toggle",
+      "space f r": "projects::OpenRecent",
+
+      // ── Buffer operations ──
+      "space b d": "pane::CloseActiveItem",
+      "space b shift-d": "pane::CloseActiveItem",
+      "space b o": ["pane::CloseInactiveItems", { "close_pinned": false }],
+      "space b b": "tab_switcher::Toggle",
+
+      // ── Window/Pane operations ──
+      "space -": "pane::SplitDown",
+      "space |": "pane::SplitRight",
+      "space w d": "pane::CloseAllItems",
+      "space w m": "workspace::ToggleZoom",
+      "space w w": "workspace::ActivateNextPane",
+
+      // ── File Explorer / Project Panel ──
+      "space e": "workspace::ToggleLeftDock",
+
+      // ── Git ──
+      // LazyGit: uses task::Spawn to launch in a center terminal
+      // Requires task in tasks.json (see header comment)
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "lazygit",
+          "reveal_target": "center",
+        },
+      ],
+      "space g s": "git_panel::ToggleFocus",
+      "space g b": "git::Blame",
+      "space g d": "editor::ToggleSelectedDiffHunks",
+
+      // ── Search ──
+      "space s s": "workspace::NewSearch",
+      "space s g": "workspace::NewSearch",
+      "space s b": "buffer_search::Deploy",
+      "space s h": ["workspace::NewSearch", { "replace_enabled": true }],
+      "space /": "workspace::NewSearch",
+
+      // ── Code Actions ──
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+
+      // ── Diagnostics ──
+      "space x d": "diagnostics::Deploy",
+      "space x x": "diagnostics::Deploy",
+      "space x w": "diagnostics::Deploy",
+      "space x q": "diagnostics::Deploy",
+
+      // ── Terminal ──
+      "space f t": "terminal_panel::ToggleFocus",
+      "space t n": "workspace::NewTerminal",
+
+      // ── UI Toggles (LazyVim's <space>u* mappings) ──
+      "space u l": "editor::ToggleLineNumbers",
+      "space u r": "editor::ToggleRelativeLineNumbers",
+      "space u s": "editor::ToggleSoftWrap",
+      "space u d": "diagnostics::Deploy",
+      "space u shift-d": "editor::ToggleInlineDiagnostics",
+      "space u t": "theme_selector::Toggle",
+      "space u z": "workspace::ToggleCenteredLayout",
+      "space u i": "editor::ToggleIndentGuides",
+
+      // ── Debug ──
+      "space d b": "editor::ToggleBreakpoint",
+      "space d a": "debugger::Start",
+      "space d c": "debugger::Continue",
+      "space d o": "debugger::StepOver",
+      "space d i": "debugger::StepInto",
+      "space d shift-o": "debugger::StepOut",
+      "space d t": "debugger::Stop",
+
+      // ── AI / Agent Panel ──
+      "space a a": "workspace::ToggleRightDock",
+    },
+  },
+
+  // ========== TERMINAL TOGGLE ==========
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": "terminal_panel::ToggleFocus",
+    },
+  },
+
+  // ========== PROJECT PANEL (File Explorer) ==========
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "v": "project_panel::OpenSplitVertical",
+      "o": "project_panel::CollapseAllEntries",
+      "escape": "workspace::ToggleLeftDock",
+    },
+  },
+
+  // ========== GIT PANEL ==========
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "escape": "workspace::ToggleRightDock",
+    },
+  },
+]
