@@ -194,20 +194,65 @@
     "command": "workbench.files.action.collapseExplorerFolders",
     "when": "filesExplorerFocus && !inputFocus"
   },
-  // Git (LazyGit and git operations)
+  // Git
   {
     "key": "space g g",
     "command": "workbench.view.scm",
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
   },
   {
+    "key": "space g c",
+    "command": "git.commit",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
     "key": "space g s",
-    "command": "workbench.view.scm",
+    "command": "git.stage",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g a",
+    "command": "git.stageAll",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g u",
+    "command": "git.unstage",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g shift+u",
+    "command": "git.unstageAll",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g p",
+    "command": "git.push",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g shift+p",
+    "command": "git.pull",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g f",
+    "command": "git.fetch",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g n",
+    "command": "git.branch",
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
   },
   {
     "key": "space g b",
-    "command": "git.blame.toggleEditorDecoration",
+    "command": "git.checkout",
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g m",
+    "command": "git.merge",
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
   },
   {
@@ -219,11 +264,6 @@
     "key": "space g h",
     "command": "git.timeline.viewCommit",
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus)"
-  },
-  {
-    "key": "space g l",
-    "command": "workbench.view.scm",
-    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus) && !inputFocus && !searchInputBoxFocus"
   },
   // Search
   {
