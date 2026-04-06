@@ -216,6 +216,9 @@
   },
 
   // ========== GitHub Copilot & Chat ==========
+  "chat.fontFamily": "Dank Mono",
+  "chat.editor.fontFamily": "Dank Mono",
+  "chat.editor.fontSize": 16.5,
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
