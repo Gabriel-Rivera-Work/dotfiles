@@ -9,37 +9,37 @@
 {
   "diagnostics": {
     "inline": {
-      "enabled": false,
-    },
+      "enabled": false
+    }
   },
   "diff_view_style": "unified",
   "git_panel": {
-    "tree_view": false,
+    "tree_view": false
   },
   "edit_predictions": {
     "mode": "subtle",
-    "provider": "zed",
+    "provider": "zed"
   },
   "context_servers": {
     "mcp-server-github": {
       "enabled": true,
       "remote": false,
-      "settings": {},
-    },
+      "settings": {}
+    }
   },
   "agent_servers": {
     "claude-acp": {
-      "type": "registry",
+      "type": "registry"
     },
     "codex-acp": {
-      "type": "registry",
+      "type": "registry"
     },
     "github-copilot-cli": {
-      "type": "registry",
+      "type": "registry"
     },
     "opencode": {
-      "type": "registry",
-    },
+      "type": "registry"
+    }
   },
   "icon_theme": "Warm Charmed Icons",
   "theme": "Aura Dark",
@@ -54,28 +54,28 @@
       "panel.focused_border": "#4E466E",
       "players": [
         {
-          "cursor": "#BD9DFF",
-        },
+          "cursor": "#BD9DFF"
+        }
       ],
       "syntax": {
         "comment": {
-          "font_style": "italic",
+          "font_style": "italic"
         },
         "comment.doc": {
-          "font_style": "italic",
-        },
-      },
-    },
+          "font_style": "italic"
+        }
+      }
+    }
   },
   "title_bar": {
     "show_branch_icon": false,
-    "show_onboarding_banner": false,
+    "show_onboarding_banner": false
   },
   "tab_bar": {
-    "show": true,
+    "show": true
   },
   "toolbar": {
-    "quick_actions": false,
+    "quick_actions": false
   },
   "project_panel": {
     "dock": "left",
@@ -86,56 +86,56 @@
     "git_status": false,
     "sticky_scroll": false,
     "scrollbar": {
-      "show": "never",
+      "show": "never"
     },
     "indent_guides": {
-      "show": "never",
-    },
+      "show": "never"
+    }
   },
   "outline_panel": {
     "default_width": 300,
     "indent_guides": {
-      "show": "never",
-    },
+      "show": "never"
+    }
   },
   "file_finder": {
-    "modal_max_width": "large",
+    "modal_max_width": "large"
   },
   "scrollbar": {
-    "show": "never",
+    "show": "never"
   },
   "gutter": {
     "min_line_number_digits": 0,
     "folds": false,
-    "runnables": false,
+    "runnables": false
   },
   "indent_guides": {
-    "enabled": false,
+    "enabled": false
   },
   "ui_font_family": "Dank Mono",
   "ui_font_size": 20,
   "buffer_font_family": "Dank Mono",
   "buffer_font_size": 20,
   "buffer_font_features": {
-    "calt": false, // Disable ligatures
+    "calt": false // Disable ligatures
   },
   "buffer_line_height": {
-    "custom": 1.8,
+    "custom": 1.8
   },
   "agent_buffer_font_size": 20,
   "terminal": {
-    "font_family": "Dank Mono",
+    "font_family": "Dank Mono"
   },
   "vim_mode": true,
   "vim": {
-    "toggle_relative_line_numbers": true,
+    "toggle_relative_line_numbers": true
   },
   "multi_cursor_modifier": "cmd_or_ctrl",
   "cursor_shape": "block",
   "cursor_blink": false,
   "selection_highlight": false,
   "drag_and_drop_selection": {
-    "enabled": false,
+    "enabled": false
   },
   "seed_search_query_from_cursor": "never",
   "current_line_highlight": "all",
@@ -154,24 +154,24 @@
   "restore_on_file_reopen": true,
   "restore_on_startup": "last_session",
   "session": {
-    "restore_unsaved_buffers": true,
+    "restore_unsaved_buffers": true
   },
   "git": {
     "git_gutter": "tracked_files",
     "inline_blame": {
-      "enabled": true,
-    },
+      "enabled": true
+    }
   },
   "centered_layout": {
     "right_padding": 0.15,
-    "left_padding": 0.15,
+    "left_padding": 0.15
   },
   "agent": {
     "profiles": {
       "front-end": {
         "default_model": {
           "provider": "copilot_chat",
-          "model": "claude-opus-4.6",
+          "model": "claude-opus-4.6"
         },
         "name": "Front-end",
         "tools": {
@@ -191,15 +191,15 @@
           "edit_file": true,
           "delete_path": true,
           "create_directory": true,
-          "copy_path": true,
+          "copy_path": true
         },
         "enable_all_context_servers": false,
-        "context_servers": {},
+        "context_servers": {}
       },
       "plan": {
         "default_model": {
           "provider": "copilot_chat",
-          "model": "gpt-5.3-codex",
+          "model": "gpt-5.3-codex"
         },
         "name": "Plan",
         "tools": {
@@ -211,43 +211,43 @@
           "find_path": true,
           "fetch": true,
           "diagnostics": true,
-          "thinking": true,
+          "thinking": true
         },
         "enable_all_context_servers": false,
-        "context_servers": {},
-      },
+        "context_servers": {}
+      }
     },
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "model": "claude-sonnet-4.6"
     },
     "favorite_models": [
       {
         "provider": "copilot_chat",
         "model": "gpt-5.3-codex",
-        "enable_thinking": false,
+        "enable_thinking": false
       },
       {
         "provider": "copilot_chat",
         "model": "claude-sonnet-4.6",
-        "enable_thinking": false,
+        "enable_thinking": false
       },
       {
         "provider": "copilot_chat",
         "model": "claude-opus-4.6",
-        "enable_thinking": false,
+        "enable_thinking": false
       },
       {
         "provider": "copilot_chat",
         "model": "gemini-3.1-pro-preview",
-        "enable_thinking": false,
-      },
+        "enable_thinking": false
+      }
     ],
-    "model_parameters": [],
+    "model_parameters": []
   },
   "which_key": {
     "enabled": true,
-    "delay_ms": 100,
-  },
+    "delay_ms": 100
+  }
 }
