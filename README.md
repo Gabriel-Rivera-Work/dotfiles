@@ -75,6 +75,16 @@ On your personal Mac, pull the latest:
 cd ~/dotfiles && git pull
 ```
 
+## Updating the Brewfile
+
+If you only want to refresh the Brewfile from your current machine, run:
+
+```bash
+brew bundle dump --file="$HOME/dotfiles/Brewfile" --force
+```
+
+This rewrites `Brewfile` to match your installed Homebrew taps, formulae, casks, fonts, and VS Code extensions.
+
 ## Post-Installation
 
 1. **Restart your terminal** or `source ~/.zshrc`

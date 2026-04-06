@@ -29,6 +29,7 @@ link "$DOTFILES_DIR/git/.gitconfig"     "$HOME/.gitconfig"
 link "$DOTFILES_DIR/.vimrc"             "$HOME/.vimrc"
 
 # ---- ~/.config apps ----
+link "$DOTFILES_DIR/aerospace"          "$HOME/.config/aerospace"
 link "$DOTFILES_DIR/ghostty"            "$HOME/.config/ghostty"
 link "$DOTFILES_DIR/nvim"               "$HOME/.config/nvim"
 link "$DOTFILES_DIR/starship.toml"      "$HOME/.config/starship.toml"
@@ -47,6 +48,19 @@ if [ -d "$VSCODE_USER_DIR" ]; then
   echo "  ✓ VS Code settings & keybindings"
 else
   echo "  ⚠  VS Code user dir not found — skipping (install VS Code first)"
+fi
+
+# ---- Zed ----
+ZED_USER_DIR="$HOME/.config/zed"
+if [ -d "$ZED_USER_DIR" ] || [ -L "$ZED_USER_DIR" ]; then
+  link "$DOTFILES_DIR/zed/settings.json"  "$ZED_USER_DIR/settings.json"
+  link "$DOTFILES_DIR/zed/keymap.json"    "$ZED_USER_DIR/keymap.json"
+  echo "  ✓ Zed settings & keymap"
+else
+  mkdir -p "$ZED_USER_DIR"
+  link "$DOTFILES_DIR/zed/settings.json"  "$ZED_USER_DIR/settings.json"
+  link "$DOTFILES_DIR/zed/keymap.json"    "$ZED_USER_DIR/keymap.json"
+  echo "  ✓ Zed settings & keymap"
 fi
 
 echo ""
