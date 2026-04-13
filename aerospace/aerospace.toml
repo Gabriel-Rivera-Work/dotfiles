@@ -31,11 +31,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Gaps between windows (adjust to taste)
 [gaps]
 inner.horizontal = 8
-inner.vertical = 8
-outer.left = 8
-outer.right = 8
-outer.bottom = 10
-outer.top = 8
+inner.vertical = 0
+outer.left = 0
+outer.right = 0
+outer.bottom = 0
+outer.top = 0
 
 # -------------------------------------------------------------------
 # App-to-workspace assignments (mnemonic keys)
@@ -136,7 +136,6 @@ cmd-ctrl-alt-shift-l = 'focus right'
 cmd-ctrl-alt-shift-x = 'layout tiles horizontal vertical'     # switch tile orientation
 cmd-ctrl-alt-shift-z = 'layout accordion horizontal vertical'
 cmd-ctrl-alt-shift-f = 'fullscreen'
-cmd-ctrl-alt-shift-g = 'layout floating tiling'               # toGgle float
 
 # ===== Resize (hyper + +/-) =====
 cmd-ctrl-alt-shift-equal = 'resize smart +50'

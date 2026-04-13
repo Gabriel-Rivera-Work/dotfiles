@@ -23,6 +23,26 @@ eval "$(zoxide init zsh)"
 # Zsh autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# ZVM zsh-vi-mode
+
+ZVM_CURSOR_BLOCK='\e[2 q'
+
+# The prompt cursor in normal mode
+ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+
+# The prompt cursor in insert mode
+ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+
+# The prompt cursor in visual mode
+ZVM_VISUAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+
+# The prompt cursor in visual line mode
+ZVM_VISUAL_LINE_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+
+# The prompt cursor in operator pending mode
+ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Aliases
 

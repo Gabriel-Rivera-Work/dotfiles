@@ -32,6 +32,9 @@ local function getTodos(opts)
   for i, line in pairs(rg_res) do
     todo_count = todo_count + 1
     local filename, row, col, text = line:match("^(.+):(%d+):(%d+):(.*)$")
+    if not text then
+      goto continue
+    end
     local sign_sym = ""
 
     for _, sign_s in ipairs(opts.sign_list) do
@@ -55,6 +58,7 @@ local function getTodos(opts)
     if todo_count == opts.limit then
       break
     end
+    ::continue::
   end
 
   return todos
@@ -171,12 +175,12 @@ return {
     dashboard = {
       preset = {
         header = [[
-           _  _     ___     ___   __   __   ___   __  __  
-    o O O | \| |   | __|   / _ \  \ \ / /  |_ _| |  \/  | 
-   o      | .` |   | _|   | (_) |  \ V /    | |  | |\/| | 
-  TS__[O] |_|\_|   |___|   \___/   _\_/_   |___| |_|__|_| 
- {======|_|"""""|_|"""""|_|"""""|_| """"|_|"""""|_|"""""| 
-./o--000'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
+           _  _     ___     ___   __   __   ___   __  __
+    o O O | \| |   | __|   / _ \  \ \ / /  |_ _| |  \/  |
+   o      | .` |   | _|   | (_) |  \ V /    | |  | |\/| |
+  TS__[O] |_|\_|   |___|   \___/   _\_/_   |___| |_|__|_|
+ {======|_|"""""|_|"""""|_|"""""|_| """"|_|"""""|_|"""""|
+./o--000'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'
 
 Hello Again!!
         ]],
