@@ -225,12 +225,12 @@
     "when": "vim.mode == 'Normal' && vim.mode != 'CommandlineInProgress' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space g p",
+    "key": "space g shift+p",
     "command": "git.push",
     "when": "vim.mode == 'Normal' && vim.mode != 'CommandlineInProgress' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space g shift+p",
+    "key": "space g p",
     "command": "git.pull",
     "when": "vim.mode == 'Normal' && vim.mode != 'CommandlineInProgress' && (editorTextFocus || !inputFocus)"
   },
