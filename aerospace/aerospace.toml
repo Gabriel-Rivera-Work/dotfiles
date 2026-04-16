@@ -56,6 +56,10 @@ run = 'move-node-to-workspace C'
 if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace C'
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCodeInsiders'
+run = 'move-node-to-workspace C'
+
 # -- Workspace B: Browser --
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
