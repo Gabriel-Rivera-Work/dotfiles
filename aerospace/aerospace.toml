@@ -67,7 +67,7 @@ run = 'move-node-to-workspace B'
 
 # Helium browser — verify this bundle ID! (see note at top of file)
 [[on-window-detected]]
-if.app-id = 'computer.helium.browser'
+if.app-id = 'net.imput.helium'
 run = 'move-node-to-workspace B'
 
 # -- Workspace A: AI --
