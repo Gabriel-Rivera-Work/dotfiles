@@ -12,11 +12,16 @@
 )
 
 (defvirtualkeys
-  to-base (layer-switch base)
+  typing-to-base (layer-switch base)
 )
 
 (defvar
-  tot 220
+  tot       220
+  t-pinky   350
+  t-ring    200
+  t-middle  160
+  t-index   250
+  t-nav     200
 )
 
 (deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
@@ -26,22 +31,19 @@
   )
 )
 
-(deftemplate homerowmodfiltered (timeouttap timeouthold keytap keyhold typinglist)
-  (tap-hold-release-keys $timeouttap $timeouthold
-    (multi $keytap @.tp)
-    $keyhold
-    $typinglist
-  )
+(deftemplate tp-letter (key)
+  (multi $key @.tp)
 )
 
 (defalias
   .tp (switch
     () (multi
           (layer-switch typing)
-          (on-idle 55 tap-vkey to-base)
+          (on-idle 55 tap-vkey typing-to-base)
        ) break
   )
-  .spc-typing (multi (layer-switch base) spc)
+  .base-spc (multi (layer-switch base) spc)
+  .spc-nav  (tap-hold $t-nav $t-nav @.base-spc (layer-while-held nav))
 )
 
 (deflayermap (base)
@@ -50,32 +52,61 @@
   caps esc rmet (multi lctl lalt lmet lsft)
 
   ;; homerow mods with per-finger timeouts
-  d (t! homerowmod $tot 160 d lsft)
-  k (t! homerowmod $tot 160 k rsft)
-  f (t! homerowmod $tot 250 f lctl)
-  j (t! homerowmod $tot 250 j rctl)
-  s (t! homerowmod $tot 200 s lalt)
-  l (t! homerowmod $tot 200 l ralt)
-  a (t! homerowmodfiltered $tot 350 a lmet (e s w))
-  ; (t! homerowmod $tot 350 ; (multi lctl lalt lmet lsft))
+  a (t! homerowmod $tot $t-pinky  a lmet)
+  s (t! homerowmod $tot $t-ring   s lalt)
+  d (t! homerowmod $tot $t-middle d lsft)
+  f (t! homerowmod $tot $t-index  f lctl)
+  j (t! homerowmod $tot $t-index  j rctl)
+  k (t! homerowmod $tot $t-middle k rsft)
+  l (t! homerowmod $tot $t-ring   l ralt)
+  ; (t! homerowmod $tot $t-pinky  ; (multi lctl lalt lmet lsft))
 
-  ;; every letter triggers the typing layer
-  q (multi q @.tp) w (multi w @.tp) e (multi e @.tp)
-  r (multi r @.tp) t (multi t @.tp) y (multi y @.tp)
-  u (multi u @.tp) i (multi i @.tp) o (multi o @.tp)
-  p (multi p @.tp) g (multi g @.tp) h (multi h @.tp)
-  z (multi z @.tp) x (multi x @.tp) c (multi c @.tp)
-  v (multi v @.tp) b (multi b @.tp) n (multi n @.tp)
-  m (multi m @.tp)
+  ;; every non-homerow letter triggers the typing layer
+  q (t! tp-letter q) w (t! tp-letter w) e (t! tp-letter e)
+  r (t! tp-letter r) t (t! tp-letter t) y (t! tp-letter y)
+  u (t! tp-letter u) i (t! tp-letter i) o (t! tp-letter o)
+  p (t! tp-letter p) g (t! tp-letter g) h (t! tp-letter h)
+  z (t! tp-letter z) x (t! tp-letter x) c (t! tp-letter c)
+  v (t! tp-letter v) b (t! tp-letter b) n (t! tp-letter n)
+  m (t! tp-letter m)
 
-  spc @.spc-typing
+  spc @.spc-nav
 )
 
 (deflayermap (typing)
   a a b b c c d d e e f f g g h h i i j j k k l l
   m m n n o o p p q q r r s s t t u u v v w w x x
   y y z z
-  spc @.spc-typing
+  spc @.base-spc
   rmet (multi lctl lalt lmet lsft)
-  caps XX
+  caps esc
+)
+
+(deflayermap (nav)
+  ;; vim-style arrows
+  h left  j down  k up  l right
+
+  ;; word-wise horizontal movement (Opt+arrow on macOS)
+  y A-left   o A-right
+
+  ;; line start / end (Cmd+arrow on macOS)
+  u M-left   p M-right
+
+  ;; page up / down
+  i pgup   , pgdn
+
+  ;; document top (Cmd+up). Document bottom removed — re-add via a chord later if needed.
+  g M-up
+
+  ;; editing helpers
+  d    del
+  ret  ret
+  esc  esc
+  bspc bspc
+
+  ;; keep modifiers usable while nav layer is held
+  a lmet  s lalt  f lctl
+  rmet (multi lctl lalt lmet lsft)
+
+  spc spc
 )
