@@ -38,69 +38,69 @@ outer.bottom = 0
 outer.top = 0
 
 # -------------------------------------------------------------------
-# App-to-workspace assignments (mnemonic keys)
+# App-to-workspace assignments (numbered workspaces)
 # -------------------------------------------------------------------
-# Workspace C: Code (Zed + VS Code)
-# Workspace B: Browser (Zen + Helium)
-# Workspace A: AI (Claude + T3 Code + Codex + ChatGPT)
-# Workspace T: Terminal (Ghostty)
-# Workspace W: Work (Slack + Figma + Asana)
+# Workspace 1: Browser (Zen + Helium)
+# Workspace 2: Editor (Zed + VS Code)
+# Workspace 3: Terminals (Ghostty + cmux)
+# Workspace 4: AI (Claude + T3 Code + Codex + ChatGPT)
+# Workspace 5: Work (Slack + Figma + Asana)
 # -------------------------------------------------------------------
 
-# -- Workspace C: Code --
+# -- Workspace 2: Editor --
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCodeInsiders'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace 2'
 
-# -- Workspace B: Browser --
+# -- Workspace 1: Browser --
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'move-node-to-workspace B'
+run = 'move-node-to-workspace 1'
 
 # Helium browser — verify this bundle ID! (see note at top of file)
 [[on-window-detected]]
 if.app-id = 'net.imput.helium'
-run = 'move-node-to-workspace B'
+run = 'move-node-to-workspace 1'
 
-# -- Workspace A: AI --
+# -- Workspace 4: AI --
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
-run = 'move-node-to-workspace A'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.t3tools.t3code'
-run = 'move-node-to-workspace A'
+run = 'move-node-to-workspace 4'
 
-# -- Workspace T: Terminal --
+# -- Workspace 3: Terminals --
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace T'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.cmuxterm.app'
-run = 'move-node-to-workspace T'
+run = 'move-node-to-workspace 3'
 
-# -- Workspace W: Work (Slack + Figma + Asana) --
+# -- Workspace 5: Work (Slack + Figma + Asana) --
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace W'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = 'move-node-to-workspace W'
+run = 'move-node-to-workspace 5'
 
 # Asana — if you install a desktop wrapper, uncomment and verify bundle ID:
 [[on-window-detected]]
 if.app-id = 'com.electron.Asana'
-run = 'move-node-to-workspace W'
+run = 'move-node-to-workspace 5'
 
 # -- Float system dialogs --
 [[on-window-detected]]
@@ -120,12 +120,12 @@ run = 'layout floating'
 
 [mode.main.binding]
 
-# ===== Workspace switching (hyper + mnemonic letter) =====
-cmd-ctrl-alt-shift-c = 'workspace C' # Code
-cmd-ctrl-alt-shift-b = 'workspace B' # Browser
-cmd-ctrl-alt-shift-a = 'workspace A' # AI (Claude)
-cmd-ctrl-alt-shift-t = 'workspace T' # Terminal
-cmd-ctrl-alt-shift-w = 'workspace W' # Work (Slack, Figma, Asana)
+# ===== Workspace switching (hyper + number) =====
+cmd-ctrl-alt-shift-1 = 'workspace 1' # Browser
+cmd-ctrl-alt-shift-2 = 'workspace 2' # Editor
+cmd-ctrl-alt-shift-3 = 'workspace 3' # Terminals
+cmd-ctrl-alt-shift-4 = 'workspace 4' # AI (Claude)
+cmd-ctrl-alt-shift-5 = 'workspace 5' # Work (Slack, Figma, Asana)
 
 # ===== Move window to workspace (hyper + shift is already maxed out,
 #       so we use a service mode instead — see below) =====
@@ -164,12 +164,12 @@ cmd-ctrl-alt-shift-s = 'mode service'
 
 [mode.service.binding]
 
-# Move focused window to workspace (same mnemonic keys)
-c = ['move-node-to-workspace C', 'mode main'] # Code
-b = ['move-node-to-workspace B', 'mode main'] # Browser
-a = ['move-node-to-workspace A', 'mode main'] # AI
-t = ['move-node-to-workspace T', 'mode main'] # Terminal
-w = ['move-node-to-workspace W', 'mode main'] # Work
+# Move focused window to workspace (same numbers)
+1 = ['move-node-to-workspace 1', 'mode main'] # Browser
+2 = ['move-node-to-workspace 2', 'mode main'] # Editor
+3 = ['move-node-to-workspace 3', 'mode main'] # Terminals
+4 = ['move-node-to-workspace 4', 'mode main'] # AI
+5 = ['move-node-to-workspace 5', 'mode main'] # Work
 
 # Move window in direction (rearrange within workspace)
 h = ['move left', 'mode main']
