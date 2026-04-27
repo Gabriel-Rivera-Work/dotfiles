@@ -1,50 +1,43 @@
-# Starship prompt
-eval "$(starship init zsh)"
+# ═══════════════════════════════════════════════════════════
+# Section 1: PATH and Environment
+# ═══════════════════════════════════════════════════════════
 
-# Oh My Zsh
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(git zoxide zsh-syntax-highlighting)
+# Add user bin directories to PATH
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
-source $ZSH/oh-my-zsh.sh
-
-# Editor Enviroment variable
+# Editor
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-# Carapace-bin setup
-autoload -U compinit && compinit
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# ═══════════════════════════════════════════════════════════
+# Section 2: Completion and Plugins
+# ═══════════════════════════════════════════════════════════
+autoload -Uz compinit
+compinit -C
+
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+ANTIDOTE_ZSH="$(brew --prefix antidote)/share/antidote/antidote.zsh"
+if [[ -f "$ANTIDOTE_ZSH" ]]; then
+  source "$ANTIDOTE_ZSH"
+  if [[ -f ${zsh_plugins}.txt && ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+    antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
+  fi
+  [[ -f ${zsh_plugins}.zsh ]] && source ${zsh_plugins}.zsh
+fi
+
+# ═══════════════════════════════════════════════════════════
+# Section 3: Starship Prompt
+# ═══════════════════════════════════════════════════════════
+# Keep Starship last so it owns the final prompt state.
+eval "$(starship init zsh)"
+
+# ═══════════════════════════════════════════════════════════
+# Section 4: Completions and Aliases
+# ═══════════════════════════════════════════════════════════
+# Completions
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
-
-# Zoxide
-eval "$(zoxide init zsh)"
-
-# Zsh autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# ZVM zsh-vi-mode
-
-ZVM_CURSOR_BLOCK='\e[2 q'
-
-# The prompt cursor in normal mode
-ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-
-# The prompt cursor in insert mode
-ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-
-# The prompt cursor in visual mode
-ZVM_VISUAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-
-# The prompt cursor in visual line mode
-ZVM_VISUAL_LINE_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-
-# The prompt cursor in operator pending mode
-ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-# Aliases
 
 # Neovim
 alias n="nvim"
@@ -52,28 +45,36 @@ alias n="nvim"
 # VS Code
 alias c="code"
 
+# Opencode
+alias oc="opencode"
+
 # Eza
 alias ls="eza -l --icons --git"
 alias lsa="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
-alias ltree="eza --tree --level=2  --icons --git"
-
-# Zoxide
-alias cd="z"
+alias ltree="eza --tree --level=2 --icons --git"
 
 # Lazygit
 alias lg="lazygit"
 
+# Zoxide
+alias cd="z"
+
 # Brew
 alias buu="brew update && brew upgrade && brew cleanup"
 
-# Reset Kanata
+# Kanata
 alias kanata-reset="sudo launchctl unload /Library/LaunchDaemons/com.kanata.daemon.plist && sudo launchctl load /Library/LaunchDaemons/com.kanata.daemon.plist"
 alias kanata-load="sudo launchctl load /Library/LaunchDaemons/com.kanata.daemon.plist"
 alias kanata-unload="sudo launchctl unload /Library/LaunchDaemons/com.kanata.daemon.plist"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ═══════════════════════════════════════════════════════════
+# Section 5: Zoxide, NVM, and Local Environment
+# ═══════════════════════════════════════════════════════════
+eval "$(zoxide init zsh)"
 
-. "$HOME/.local/bin/env"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
